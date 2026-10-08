@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Portfolio architecture
+- Keep each portfolio section in its own TanStack leaf route with page-specific metadata; this makes all five sections directly shareable.
+- Use a shared portfolio shell and global semantic design tokens for consistent navigation and visual identity.
+- Do not invent personal contact links, portraits, or resume documents; leave those unavailable until supplied.

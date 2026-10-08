@@ -1,24 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowDown, ArrowUpRight, GraduationCap, HeartPulse, Network, Lightbulb, MessagesSquare, Asterisk } from 'lucide-react';
+import { pageHead, skills } from '@/lib/portfolio';
+import { SocialLinks } from '@/components/portfolio-shell';
+import desk from '@/assets/engineering-desk.jpg';
+export const Route = createFileRoute('/')({ head: () => pageHead('AI Engineer & Systems Builder', 'Gauri Menon is an AI Engineer and IIT Kanpur graduate building production-ready AI systems, with an interest in Healthcare AI.'), component: AboutPage });
+const interests = [{icon:HeartPulse,title:'Healthcare AI',text:'Medical imaging, healthcare data and intelligent healthcare systems.'},{icon:Network,title:'AI Systems & Architecture',text:'Agents, workflows, APIs, infrastructure and observability.'},{icon:Lightbulb,title:'Products & Ownership',text:'Problem definition, architecture, prioritization and delivery.'},{icon:MessagesSquare,title:'Technology & Communication',text:'Where AI, technology, business and economics meet.'}];
+function AboutPage() { return <main className="page-wrap page-enter"><section className="hero"><p className="eyebrow">AI Engineer · IIT Kanpur graduate</p><h1 className="hero-name"><span>HEY, I'M</span><span className="name-stamp">GAURI<span className="text-primary">.</span></span></h1><div className="hero-aside" aria-hidden="true"><div className="role-stamp">AI<br /><strong>ENGINEER</strong><span className="absolute -top-5 -right-4 text-4xl text-primary">✳</span></div><svg className="hero-arrow" viewBox="0 0 200 145" fill="none"><path d="M8 10C95 45 111 145 57 125C17 109 100 46 172 104M158 86l14 18-24 2" stroke="currentColor" strokeWidth="1.7" /></svg><p className="hero-note">A little curiosity.<br />A lot of systems thinking.</p></div><p className="hero-copy">An AI Engineer who likes turning messy problems into <strong>well-architected systems.</strong></p><div className="hero-bottom"><SocialLinks /><a href="#a-little-about-me" className="eyebrow no-underline">A little more about me <ArrowDown size={16} /></a></div></section><section id="a-little-about-me" className="section-band about-grid"><div className="relative"><img src={desk} className="desk-image" alt="An engineering workspace with code and hand-drawn system architecture" width={1024} height={1024} loading="lazy" /><span className="absolute bottom-4 -right-3 bg-secondary border border-primary px-4 py-2 font-mono text-xs -rotate-3">FROM IDEAS TO SYSTEMS ↗</span></div><div><h2 className="section-heading -rotate-2"><strong>A LITTLE</strong> ABOUT ME</h2><p className="about-text">I build AI-powered solutions end-to-end, from agents and models to the infrastructure that makes them production-ready.</p><p className="about-text mt-3!">IIT Kanpur graduate, with a particular interest in <span className="text-primary font-semibold">Healthcare AI</span> and intelligent products.</p><div className="education"><GraduationCap className="text-primary shrink-0" size={28} /><div><h3 className="font-mono text-sm font-bold">IIT KANPUR</h3><p className="text-xs mt-2">B.Tech. — Biotechnology <span className="text-muted-foreground">| 2020–2024</span></p><p className="text-xs text-muted-foreground leading-relaxed mt-3">My foundation in engineering, computational thinking and life sciences — brought together through AI solutions architecture.</p></div></div></div></section><section className="section-band"><div className="flex items-center justify-between gap-5"><h2 className="section-heading rotate-1"><strong>WHAT</strong> DRIVES ME</h2><Asterisk className="text-primary" size={40} strokeWidth={1.5} /></div><div className="interest-grid">{interests.map(({icon:Icon,title,text}) => <article key={title}><Icon size={34} strokeWidth={1.4} className="interest-icon" /><h3>{title}</h3><p>{text}</p></article>)}</div></section><section className="section-band"><h2 className="section-heading -rotate-1"><strong>WHAT</strong> I CAN DO</h2><div className="capability-grid">{['Architect end-to-end AI solutions','Build Agentic & RAG systems','Productionize AI','Design cloud, DevOps & distributed systems','Build and adapt AI models','Turn client problems into solutions'].map((item,i) => <div className="capability" key={item}><span className="font-mono text-xs text-primary">0{i+1}</span>{item}<ArrowUpRight className="ml-auto shrink-0 text-primary" size={17}/></div>)}</div><Link to="/projects" className="mt-7 inline-flex items-center gap-2 text-primary font-mono text-xs underline underline-offset-4">See these skills in action <ArrowUpRight size={15}/></Link></section><section className="section-band"><h2 className="section-heading rotate-1"><strong>MY</strong> TOOLKIT</h2><div className="mt-7">{Object.entries(skills).map(([category,items]) => <div key={category} className="skill-row"><h3 className="skill-label">{category}</h3><div className="flex flex-wrap gap-2">{items.map(item => <span className="skill-pill" key={item}>{item}</span>)}</div></div>)}</div></section></main>; }
