@@ -3,7 +3,7 @@ export function pageHead(title: string, description: string) {
 }
 export const skills = {
   AI: ['Agentic AI', 'LLMs', 'RAG', 'Multimodal AI', 'Fine-tuning', 'Generative Vision'],
-  Engineering: ['LangGraph', '\n', 'AI Evaluation', 'Observability', 'Vector Search'],
+  Engineering: ['LangGraph', 'LlamaIndex', 'AI Guardrails', 'AI Evaluation', 'Observability', 'Vector Search'],
   Architecture: ['System Design', 'Microservices', 'Distributed Systems', 'REST APIs', 'Python', 'FastAPI'],
   Infrastructure: ['Kubernetes', 'Docker', 'GCP', 'CI/CD', 'Ray', 'Kubeflow', 'KServe', 'GPU Computing'],
   Data: ['Redis', 'MongoDB', 'SQL', 'Data Pipelines'],
