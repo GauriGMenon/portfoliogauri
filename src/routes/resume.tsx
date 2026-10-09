@@ -4,6 +4,7 @@ import { Download, ArrowUpRight, FileUp } from 'lucide-react';
 import { PageIntro, SocialLinks } from '@/components/portfolio-shell';
 import { Button } from '@/components/ui/button';
 import { pageHead } from '@/lib/portfolio';
+import { ResumePdf } from '@/components/resume-pdf';
 export const Route = createFileRoute('/resume')({head: () => pageHead('Resume', 'A concise overview of Gauri Menon’s experience, education and technical skills.'),component: ResumePage});
 function ResumePage() {
   const [file, setFile] = useState<File | null>(null);
@@ -40,7 +41,7 @@ function ResumePage() {
         setFile(selected);
       }}/>
       {error && <p role="alert" className="text-destructive text-sm mb-4">{error}</p>}
-      <iframe src={previewUrl} title="Gauri Menon resume PDF" className="w-full h-[850px] max-md:h-[650px] border border-border bg-card" />
+      <ResumePdf url={previewUrl} />
     </section>
     <section className="section-band flex flex-wrap justify-between gap-5 items-center"><h2 className="font-mono text-xl">LET'S CONNECT.</h2><SocialLinks resume={false}/></section>
   </main>;
