@@ -17,7 +17,7 @@ export function ResumePdf({ url }: { url: string }) {
         const pdfjs = await import('pdfjs-dist');
         if (cancelled || !host) return;
         pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
-        const task = pdfjs.getDocument(url);
+        const task = pdfjs.getDocument({ url });
         dispose = () => { void task.destroy(); };
         const pdf = await task.promise;
         for (let number = 1; number <= pdf.numPages; number++) {
