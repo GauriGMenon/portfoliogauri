@@ -13,3 +13,4 @@
 - Keep each portfolio section in its own TanStack leaf route with page-specific metadata; this makes all five sections directly shareable.
 - Use a shared portfolio shell and global semantic design tokens for consistent navigation and visual identity.
 - Do not invent personal contact links, portraits, or resume documents; leave those unavailable until supplied.
+- Render resumes with browser-only PDF.js canvas rendering and open/download fallbacks for consistent embedded display; a clearly labeled sample is allowed until the final PDF is supplied, and file selection is a temporary browser preview only.
