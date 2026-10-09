@@ -30,7 +30,9 @@ export function ResumePdf({ url }: { url: string }) {
           canvas.className = 'block w-full h-auto';
           canvas.setAttribute('role', 'img');
           canvas.setAttribute('aria-label', `Resume PDF page ${number}`);
-          await page.render({ canvas, viewport }).promise;
+          const canvasContext = canvas.getContext('2d');
+          if (!canvasContext) throw new Error('Canvas rendering is unavailable');
+          await page.render({ canvasContext, viewport }).promise;
           if (cancelled) return;
           host.append(canvas);
         }
